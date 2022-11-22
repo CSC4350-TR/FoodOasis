@@ -511,4 +511,36 @@ input[id=username], input[type=password]{
         font-size: 10px;
     }
 }
-
+.container {
+            width:600px;
+            height:190px;
+            background-color:#11b706;
+            padding-top:20px;
+            padding-left:15px;
+            padding-right:15px;
+        }
+        #st-box {
+            float:left;
+            width:180px;
+            height:160px;
+            background-color:#f6f6e9ff;
+            border:solid black;
+        }
+        #nd-box {
+            float:left;
+            width:180px;
+            height:160px;
+            background-color:#f6f6e9ff; 
+            border:solid black;
+            margin-left:20px;
+        }
+        #rd-box {
+            float:right;
+            width:180px;
+            height:160px;
+            background-color:#f6f6e9ff;
+            border:solid black;
+        }
+        h1 {
+            color:#11b706;
+        }
