@@ -9,8 +9,9 @@
 		<link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
 		<script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
 		<style>
-		body { margin: 0; padding: 0; }
+		body { margin: 0; padding: 0; height: 950px;}
 		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+		#nameofOasisLabel{ font-size: 20px; font-weight: bold;}
 		</style>
 	</head>
 
@@ -46,13 +47,16 @@
     </nav>
 
 	<div class="main_content">
-		<!--should we change this title?-->
-		<h1 id="welcomeback" >Welcome Back</h1>
+		<h1 id="welcomeback" >New Oasis</h1>
 	</div>
 		 <!--they will have a list of products like a yard sale and first come first serve-->
 	<center>
-	<h2>Product Listings</h2>
 	<form action="/seller.php">
+	<div class="nameofOasis">
+		<label for="nameofOasis" id="nameofOasisLabel">Name of Oasis: </label>
+		<input type="text" id="nameofOasis" name="nameofOasis" required>
+	</div>
+	<h2>Product Listings</h2>
 	<div class="inbox">
 		<div class="item">
 			<input type="checkbox">
@@ -79,8 +83,6 @@
 			<p class="foodtype">Non-Perishables</p>
 		</div>
 	</div>
-	<input type="submit" value="Submit" id="submitseller">
-	</form>
 
 	<!--Mapbox stuff-->
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
@@ -92,7 +94,7 @@
     margin: 20px;
     }
     .mapboxgl-ctrl-geocoder {
-    min-width: 75%;
+    min-width: 50%;
     }
     </style>
     <div id="geocoder"></div>
@@ -115,6 +117,9 @@
     results.innerText = '';
     });
     </script>
+
+	<input type="submit" value="Submit" id="submitseller">
+	</form>
 
 	</body>
 </html>

@@ -80,26 +80,24 @@
             <p class="foodtype">Non-Perishables</p>
         </div>
     </div>
-    <input type="submit" value="Submit" id="submitseller">
-    </form>
 
-    <!--Mapbox stuff-->>
+    <!--Mapbox stuff-->
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
-     <h2 id="enterAddress">Location of Oasis</h2>
+    <h2 id="enterAddress">Location of Oasis</h2>
     <style>
     #geocoder {
     z-index: 1;
     margin: 20px;
     }
     .mapboxgl-ctrl-geocoder {
-    min-width: 100%;
+    min-width: 50%;
     }
     </style>
-     
+    
     <div id="geocoder"></div>
     <pre id="result"></pre>
-     
+    
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoienBhbjMiLCJhIjoiY2xha2Yzd3RvMGxvZzN5bGYydGpsZGNjOSJ9.JbRKjmgYO_jvMrQLVzEMSQ';
         const geocoder = new MapboxGeocoder({
@@ -111,18 +109,20 @@
 
     // Get the geocoder results container.
     const results = document.getElementById('result');
-     
+    
     // Add geocoder result to container.
     geocoder.on('result', (e) => {
     results.innerText = "Coordinates: " + JSON.stringify(e.result.geometry.coordinates);
     });
-     
+    
     // Clear results container when search is cleared.
     geocoder.on('clear', () => {
     results.innerText = '';
     });
-    
     </script>
+
+    <input type="submit" value="Submit" id="submitseller">
+    </form>
 
 	</body>
 </html>
