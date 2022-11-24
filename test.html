@@ -5,15 +5,15 @@
 		<title>Seller Page</title>
 		<link rel="stylesheet" href="style.css">
 
-		<!-- Mapbox stuff -->
-		<link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
-		<script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
-		<style>
-		body { margin: 0; padding: 0; }
-		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
-		</style>
+        <!-- Mapbox stuff -->
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+        <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        </style>
 	</head>
-
+    
 	<body>
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -49,71 +49,79 @@
 		<!--should we change this title?-->
 		<h1 id="welcomeback" >Welcome Back</h1>
 	</div>
-		 <!--they will have a list of products like a yard sale and first come first serve-->
-	<center>
-	<h2>Product Listings</h2>
-	<form action="/seller.php">
-	<div class="inbox">
-		<div class="item">
-			<input type="checkbox">
-			<p class="foodtype" >Dairy</p>
-		</div>
-		<div class="item">
-			<input type="checkbox">
-			<p class="foodtype">Vegetables</p>
-		</div>
-		<div class="item">
-			<input type="checkbox">
-			<p class="foodtype">Fruits</p>
-		</div>
-		<div class="item">
-			<input type="checkbox">
-			<p class="foodtype">Drinks</p>
-		</div>
-		<div class="item">
-			<input type="checkbox">
-			<p class="foodtype">Meats</p>
-		</div>
-		<div class="item">
-			<input type="checkbox">
-			<p class="foodtype">Non-Perishables</p>
-		</div>
-	</div>
-	<input type="submit" value="Submit" id="submitseller">
-	</form>
 
-	<!--Mapbox stuff-->
+    <!--they will have a list of products like a yard sale and first come first serve-->
+    <center>
+    <h2>Product Listings</h2>
+    <form action="/seller.php">
+    <div class="inbox">
+        <div class="item">
+            <input type="checkbox">
+            <p class="foodtype" >Dairy</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p class="foodtype">Vegetables</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p class="foodtype">Fruits</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p class="foodtype">Drinks</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p class="foodtype">Meats</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p class="foodtype">Non-Perishables</p>
+        </div>
+    </div>
+    <input type="submit" value="Submit" id="submitseller">
+    </form>
+
+    <!--Mapbox stuff-->>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
-    <h2 id="enterAddress">Location of Oasis</h2>
+     <h2 id="enterAddress">Location of Oasis</h2>
     <style>
     #geocoder {
     z-index: 1;
     margin: 20px;
     }
     .mapboxgl-ctrl-geocoder {
-    min-width: 75%;
+    min-width: 100%;
     }
     </style>
+     
     <div id="geocoder"></div>
     <pre id="result"></pre>
+     
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoienBhbjMiLCJhIjoiY2xha2Yzd3RvMGxvZzN5bGYydGpsZGNjOSJ9.JbRKjmgYO_jvMrQLVzEMSQ';
         const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         types: 'poi, address'
     });
+
     geocoder.addTo('#geocoder');
+
     // Get the geocoder results container.
     const results = document.getElementById('result');
+     
     // Add geocoder result to container.
     geocoder.on('result', (e) => {
     results.innerText = "Coordinates: " + JSON.stringify(e.result.geometry.coordinates);
     });
+     
     // Clear results container when search is cleared.
     geocoder.on('clear', () => {
     results.innerText = '';
     });
+    
     </script>
 
 	</body>
