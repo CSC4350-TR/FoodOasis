@@ -1,128 +1,66 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Seller Page</title>
-		<link rel="stylesheet" href="style.css">
+<head>
+<meta charset="utf-8">
+<title>Place the geocoder input outside the map</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 80%; }
+</style>
+</head>
+<body>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
 
-        <!-- Mapbox stuff -->
-        <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
-        <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
-        <style>
-        body { margin: 0; padding: 0; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-        </style>
-	</head>
-    
-	<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="navbar_container">
-            <a href="index.html" id="navbar_logo">
-                <img src="images/LogoByLUCY.png">
-                <img src="images/LabelByLUCY.png">
-
-            </a>
-            <div class="navbar_toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar_menu">
-                <li class="navbar_item">
-                    <a href="index.html" class="navbar_links">Home</a>
-                </li>
-                <li class="navbar_item">
-                    <a href="findOasis.html" class="navbar_links">Find Oasis</a>
-                </li>
-                <li class="navbar_item">
-                    <a href="newOasis.html" class="navbar_links">New Oasis</a>
-                </li>
-                <li class="navbar_item">
-                    <a href="mission.html" class="navbar_links">Our Mission</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-	<div class="main_content">
-		<!--should we change this title?-->
-		<h1 id="welcomeback" >Welcome Back</h1>
-	</div>
-
-    <!--they will have a list of products like a yard sale and first come first serve-->
-    <center>
-    <h2>Product Listings</h2>
-    <form action="/seller.php">
-    <div class="inbox">
-        <div class="item">
-            <input type="checkbox">
-            <p class="foodtype" >Dairy</p>
-        </div>
-        <div class="item">
-            <input type="checkbox">
-            <p class="foodtype">Vegetables</p>
-        </div>
-        <div class="item">
-            <input type="checkbox">
-            <p class="foodtype">Fruits</p>
-        </div>
-        <div class="item">
-            <input type="checkbox">
-            <p class="foodtype">Drinks</p>
-        </div>
-        <div class="item">
-            <input type="checkbox">
-            <p class="foodtype">Meats</p>
-        </div>
-        <div class="item">
-            <input type="checkbox">
-            <p class="foodtype">Non-Perishables</p>
-        </div>
-    </div>
-
-    <!--Mapbox stuff-->
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
-    <h2 id="enterAddress">Location of Oasis</h2>
-    <style>
-    #geocoder {
-    z-index: 1;
-    margin: 20px;
+<style>
+    .geocoder {
+        position: absolute;
+        z-index: 1;
+        width: 50%;
+        left: 50%;
+        margin-left: -25%;
+        top: 80px;
     }
     .mapboxgl-ctrl-geocoder {
-    min-width: 50%;
+        min-width: 100%;
     }
-    </style>
-    
-    <div id="geocoder"></div>
-    <pre id="result"></pre>
-    
-    <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoienBhbjMiLCJhIjoiY2xha2Yzd3RvMGxvZzN5bGYydGpsZGNjOSJ9.JbRKjmgYO_jvMrQLVzEMSQ';
-        const geocoder = new MapboxGeocoder({
+    #map {
+    border: 5px #0c2cff solid;
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    left: 45%;
+    margin-left: -25%;
+    width: 60%;
+    margin-top: 150px;
+    }
+</style>
+
+<div id="map"></div>
+
+<div id="geocoder" class="geocoder"></div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoienBhbjMiLCJhIjoiY2xha2Yzd3RvMGxvZzN5bGYydGpsZGNjOSJ9.JbRKjmgYO_jvMrQLVzEMSQ';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [-79.4512, 43.6568],
+        zoom: 13
+    });
+
+    // Add the control to the map.
+    const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
-        types: 'poi, address'
+        mapboxgl: mapboxgl
     });
 
-    geocoder.addTo('#geocoder');
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+</script>
 
-    // Get the geocoder results container.
-    const results = document.getElementById('result');
-    
-    // Add geocoder result to container.
-    geocoder.on('result', (e) => {
-    results.innerText = "Coordinates: " + JSON.stringify(e.result.geometry.coordinates);
-    });
-    
-    // Clear results container when search is cleared.
-    geocoder.on('clear', () => {
-    results.innerText = '';
-    });
-    </script>
-
-    <input type="submit" value="Submit" id="submitseller">
-    </form>
-
-	</body>
+</body>
 </html>

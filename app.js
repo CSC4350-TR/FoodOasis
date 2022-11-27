@@ -26,10 +26,6 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-
-
-
-
 const checkboxes = document.querySelectorAll('input[type="checkbox"]')
 //step 1: keep track of last checked box
 //step 2: is shiftkey down?
@@ -58,3 +54,89 @@ function handleCheck(e){
 }
 
 checkboxes.forEach(item => item.addEventListener('click', handleCheck));
+
+mapboxgl.accessToken = 'pk.eyJ1IjoienBhbjMiLCJhIjoiY2xha2Yzd3RvMGxvZzN5bGYydGpsZGNjOSJ9.JbRKjmgYO_jvMrQLVzEMSQ';
+// coordinates data json
+var geojson = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [-84.388168, 33.748783]
+      },
+      properties: {
+        title: 'Georgia State Capitol Oasis',
+        description: 'Meats, Drinks, Vegetables, Dairy'
+      }
+    },
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [-122.414, 37.776]
+      },
+      properties: {
+        title: 'San Fran Oasis',
+        description: 'Vegetables, Dairy'
+      }
+    }
+  ]
+};
+geojson.features.push({
+  type: "Feature", 
+  geometry: {
+    type:'Point',
+    coordinates: [-84.389303,33.756631]
+  },
+  properties: {
+    title: 'Aderhold Oasis',
+    description: 'Fruits, Vegetables, Dairy'
+  }
+}); 
+
+// map
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v12',
+  center: [-96, 37.8],
+  zoom: 3
+});
+// Geocoder
+const geocoder = new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: mapboxgl
+});
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+map.addControl(
+    new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        // When active the map will receive updates to the device's location as it changes.
+        trackUserLocation: true,                
+    })
+);
+// add controls to map 
+map.addControl(new mapboxgl.NavigationControl());
+// add markers to map
+for (const feature of geojson.features) {
+  // create a HTML element for each feature
+  const el = document.createElement('div');
+  el.className = 'marker';
+  // make a marker for each feature and add it to the map
+  new mapboxgl.Marker(el)
+  .setLngLat(feature.geometry.coordinates)
+  .setPopup(
+    new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML(
+        `
+        <h3>${feature.properties.title}</h3>
+        <p>${feature.properties.description}</p>
+        <button class="gps"><a href="http://maps.google.co.uk/maps?q=${feature.geometry.coordinates[1]},${feature.geometry.coordinates[0]}">GPS</a></button> 
+        `
+      )
+  )
+  .addTo(map);
+}
