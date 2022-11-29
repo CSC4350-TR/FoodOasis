@@ -180,81 +180,53 @@ body{
     font-weight: 500;
     color: #383737;
 }
-.findOasis_btn{
-    font-size: 1rem;
+a.findOasis_btn{
+    display:inline-block;
+    padding: 14px 32px;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 10px;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:#FFFFFF;
     background-image: linear-gradient(to top, #fab55a, #ff9a17);
+    text-align:center;
+    transition: all 1s ease;
+}
+a.findOasis_btn:hover{
+    background-image: linear-gradient(to top, rgb(86, 84, 84) ,black);
+}
+@media all and (max-width:30em){
+    a.findOasi{
+        display:block;
+        margin:0.4em auto;
+    }
+}
+a.newOasis_btn{
+    display:inline-block;
     padding: 14px 32px;
-    border: none;
-    border-radius: 4px;
-    color:white;
     margin-top: 2rem;
     margin-right: 2rem;
     margin-bottom: 10px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.35s;
-    outline: none;
-}
-.findOasis_btn a{
-    position: relative;
-    z-index: 2;
-    color:white;
-    text-decoration: none;
-}
-.findOasis_btn:after{
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: #383737;
-    transition: all 0.35s;
-    border-radius: 4px;
-}
-.findOasis_btn:hover{
-    color:white;
-}
-.findOasis_btn:hover:after{
-    width: 100%;
-}
-.newOasis_btn{
-    font-size: 1rem;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:#FFFFFF;
     background-image: linear-gradient(to top, #5ce053, #11b706);
-    padding: 14px 32px;
-    border: none;
-    border-radius: 4px;
-    color:white;
-    margin-top: 2rem;
-    margin-right: 2rem;
-    margin-bottom: 10px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.35s;
-    outline: none;
+    text-align:center;
+    transition: all 1s ease;
 }
-.newOasis_btn a{
-    position: relative;
-    z-index: 2;
-    color:white;
-    text-decoration: none;
+a.newOasis_btn:hover{
+    background-image: linear-gradient(to top, rgb(86, 84, 84) ,black);
 }
-.newOasis_btn:after{
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: #383737;
-    transition: all 0.35s;
-    border-radius: 4px;
-}
-.newOasis_btn:hover{
-    color:white;
-}
-.newOasis_btn:hover:after{
-    width: 100%;
+@media all and (max-width:30em){
+    a.newOasis_btn{
+        display:block;
+        margin:0.4em auto;
+    }
 }
 .main_img-container{
     text-align: center;
@@ -601,15 +573,10 @@ input[id=nameofOasis]{
 }
 #map {
     position: absolute; 
-    top: 0; 
-    bottom: 0; 
-    left: 45%;
-    margin-left: -25%;
-    width: 60%;
     margin-top: 150px;
 }
 .mapContainer{
-    height: 800px;
+    height: 650px;
 }
 .marker {
     background-image: url('images/pin.png');
@@ -623,5 +590,27 @@ input[id=nameofOasis]{
 }
 .mapboxgl-popup-content {
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+}
+a.gpsBtn{
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    margin-top: 5px;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color:#04AA6D;
+    text-align:center;
+    transition: all 0.2s;
+}
+a.gpsBtn:hover{
+    background-color: #ff9a17;
+}
+@media all and (max-width:30em){
+    a.gpsBtn{
+        display:block;
+        margin:0.4em auto;
+    }
 }

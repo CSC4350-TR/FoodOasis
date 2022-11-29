@@ -134,9 +134,28 @@ for (const feature of geojson.features) {
         `
         <h3>${feature.properties.title}</h3>
         <p>${feature.properties.description}</p>
-        <button class="gps"><a href="http://maps.google.co.uk/maps?q=${feature.geometry.coordinates[1]},${feature.geometry.coordinates[0]}">GPS</a></button> 
+        <a href="http://maps.google.co.uk/maps?q=${feature.geometry.coordinates[1]},${feature.geometry.coordinates[0]}" class="gpsBtn">GPS</a>
         `
       )
+  )
+  .addTo(map);
+}
+
+// create marker w/out json
+newMarker();
+function newMarker(){
+  const bb = document.createElement('div');
+  bb.className='marker';
+  new mapboxgl.Marker(bb)
+  .setLngLat([139.6503, 35.6762])
+  .setPopup(
+  new mapboxgl.Popup({ offset: 25})
+      .setHTML(
+      `<h3>Tokyo<h3>
+      <p>hi</p>
+      <a href="index.html" class="gpsBtn">GPS</a>
+      `
+      )  
   )
   .addTo(map);
 }
