@@ -201,7 +201,7 @@ a.findOasis_btn:hover{
     background-image: linear-gradient(to top, rgb(86, 84, 84) ,black);
 }
 @media all and (max-width:30em){
-    a.findOasi{
+    a.findOasis_btn{
         display:block;
         margin:0.4em auto;
     }
@@ -645,5 +645,27 @@ a.gpsBtn:hover{
     a.gpsBtn{
         display:block;
         margin:0.4em auto;
+    }
+}
+a.btnyes{
+    display:inline-block;
+    padding: 14px 32px;
+    margin-top: 2rem;
+    margin-bottom: 10px;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight:300;
+    color:#FFFFFF;
+    background-image: linear-gradient(to top, #fab55a, #ff9a17);
+    text-align:center;
+    transition: all 1s ease;
+}
+a.btnyes:hover{
+    background-image: linear-gradient(to top, rgb(86, 84, 84) ,black);
+}
+@media all and (max-width:30em){
+    a.btnyes{
+        display:block;
     }
 }
