@@ -14,7 +14,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -28,6 +28,8 @@ body{
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 50px;
+    border-bottom: 1px solid black;
+    
 }
 #navbar_logo img{
     height: 70px;
@@ -282,54 +284,85 @@ a.newOasis_btn:hover{
         margin: 0rem 1rem;
     }
 }
-/* Mission */
-.mission{
+#vege_pic {
+    padding-top: 10px;
+    display:block;
+    border-radius: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+}
+/* About Us */
+.AU {
     background-color: #f6f6e9ff;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 90vh;
 }
-.mission_container{
+.AU_container{
     background-color: #f6f6e9ff;
-    display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     padding: 0 50px;
 }
-.mission_content{
+.AU_content{
     text-align: center;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     margin-bottom: 2rem;
 }
-.mission h1{
+.grid {
+    display: grid;
+    grid-gap: 1em;
+    grid-auto-flow: row;
+    grid-column: 2;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box:nth-child(4) {
+    grid-column: 2;
+}
+.box table {
+    border: 1px solid #1d6418;
+    width: 90%;
+    height: 80%;
+}
+.box td {
+    text-align: center;
+    padding: 15px;
+}
+#child_eating {
+    border-radius: 15%;
+    height:85%;
+    width: 85%;
+}
+.AU h1{
+    display: block;
     background-color: #77dd70;
     background-image: linear-gradient(to right, #57c74f 10%, #30a328 31%, #278620, #11470d 100%);
     background-size: 100%;
-    margin-bottom: 1rem;
-    font-size: 3rem;
+    margin-bottom: 3rem;
+    font-size: 5rem;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
 }
-.mission p{
+.AU p{
     margin-top: .25rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 500;
     color: #383737;
 }
-.mission_img-container{
-    text-align: center;
-}
-#mission_img{
-    height: 80%;
-    width: 80%;
+#AU_img{
+    height:85%;
+    width: 85%;
 }
 @media screen and (max-width: 960px){
-    .mission_container{
+    .AU_container{
         display: grid;
         grid-template-columns: auto;
         align-items: center;
@@ -338,23 +371,23 @@ a.newOasis_btn:hover{
         margin: 0 auto;
         height: fit-content;
     }
-    .mission_content{
+    .AU_content{
         margin-bottom: .5rem;
     }
-    .mission h1{
+    .AU h1{
         font-size: 2.5rem;
         margin-top: .75rem;
     }
-    .mission p{
+    .AU p{
         font-size: 1.2rem;
     } 
 }
 @media screen and (max-width: 500px){
-    .mission_content h1{
+    .AU_content h1{
         font-size: 1.75rem;
         margin-top: .75rem;
     }
-    .mission_content p{
+    .AU_content p{
         margin-top: .5rem;
         font-size: 1rem;
     }
