@@ -81,6 +81,17 @@ var geojson = {
         title: 'San Fran Oasis',
         description: 'Vegetables, Dairy'
       }
+    },
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [-84.3963, 33.7756]
+      },
+      properties: {
+        title: 'GA Tech Lame',
+        description: 'Meats, Drinks'
+      }
     }
   ]
 };
