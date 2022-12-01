@@ -151,9 +151,9 @@ function newMarker(){
   .setPopup(
   new mapboxgl.Popup({ offset: 25})
       .setHTML(
-      `<h3>Tokyo<h3>
-      <p>hi</p>
-      <a href="index.html" class="gpsBtn">GPS</a>
+      `<h3>Tokyo</h3>
+      <p style="font-weight: normal;">Non-perishables, Dairy, Fruits</p>
+      <a href="http://maps.google.co.uk/maps?q=35.6762,139.6503" class="gpsBtn">GPS</a>
       `
       )  
   )
