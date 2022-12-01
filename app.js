@@ -29,7 +29,7 @@ function topFunction() {
 const checkboxes = document.querySelectorAll('input[type="checkbox"]')
 //step 1: keep track of last checked box
 //step 2: is shiftkey down?
-    //if yes, check everyhing in btw
+    //if yes, check everything in btw
       //loop through all boxes again and check all in between
     //if no, just check current box
 
